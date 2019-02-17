@@ -344,7 +344,7 @@ a:hover{
 	padding-left: 20px;
 	float: left;
 	position: absolute;
-	margin-left: 200px;
+	margin-left: 400px;
 }
 
 .footer {
@@ -393,4 +393,5 @@ a:hover{
 .promote-all{
 	display: block;
 }
+
 }
