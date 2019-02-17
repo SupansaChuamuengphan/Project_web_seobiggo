@@ -83,7 +83,7 @@
 
          <div class="itemsIncart-nobg" v-if="!isShowingCart"v-show="isHiding">
              <span>
-                <span>มีของหวาน</span> {{ cart.items.length }} ชิ้น, ยอดรวม {{ cartTotal | currency }}
+                <span>มีของหวาน</span> {{ cart.items.length }} ชิ้น <br>ยอดรวม  {{ cartTotal | currency }} <br> <br>
             </span>
             <button class="viewCart" v-if="!isShowingCart" @click="isShowingCart = true"><i class="fas fa-shopping-basket"></i> <span class="badge">{{ cart.items.length }}</span></button>
 

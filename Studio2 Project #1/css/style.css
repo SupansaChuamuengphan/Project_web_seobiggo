@@ -9,9 +9,19 @@ header {
 	font-family: 'Mitr', sans-serif;
 	color: #fff;
 	text-align: right;
-	padding: 20pt;
+	padding: 6pt;
 	position: relative;
 	background-color: #0a0c0d;
+	text-align: left;
+}
+.itemsIncart-nobg {
+
+	position: fixed;
+	left: 0;
+	z-index: 1;
+	background-color: rgb(255,150,0,0.2);
+	border-radius: 4px;
+	width: 140px;
 }
 .menu-select-nobg {
 	background-color: #0a0c0d;
@@ -119,6 +129,7 @@ header {
 	font-family: 'Mitr', sans-serif;
 }
 .fa-shopping-basket {
+
 	font-size: 30pt;
 }
 .fa-arrow-alt-circle-left {
@@ -225,12 +236,13 @@ button.Shopping:hover{
 .badge{
 
   position: absolute;
-  top: 22px;
-  right: 22px;
+  top:70px;
+  right: 70px;
   padding: 2.5px 5px;
   border-radius: 50%;
   background-color: #e9a100;
   color: black;
+  font-size: 13pt;
 }
 .btn-buyOnline button{
 	border-radius: 4px;
@@ -395,5 +407,27 @@ a:hover{
 .promote-all{
 	display: block;
 }
+.itemsIncart-nobg {
+	top: 660px;
+	position: fixed;
+	z-index: 1;
+	background-color: rgb(255,150,0,0.2);
+	border-radius: 4px;
+	width: 140px;
+	left: 91.5%;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 }
