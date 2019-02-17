@@ -49,13 +49,13 @@
 
         <div class="user-information" v-if="!isShowingCart">
             <label>ระบุข้อมูลผู้สั่งออเดอร์</label>
-            <input type="text" placeholder="ชื่อ" v-model="nameCustomer">
-            <input type="text" placeholder="เบอร์โทรศัพท์"><br>
+            <input type="text" placeholder=" ชื่อ" v-model="nameCustomer">
+            <input type="text" placeholder=" เบอร์โทรศัพท์"><br>
             <span> เลือกโต๊ะ </span>
             <select v-model="tableSelect.numberSelect">
                 <option v-for="n in 20" v-bind:value="n">{{n}}</option>
             </select>
-            <span> เลือกที่นั่ง </span>
+            <span> เลือกจำนวนที่นั่ง </span>
             <select v-model="sitSelect.numbsitSelect" >
                 <option v-for="n in 6" v-bind:value="n">{{n}}</option>
             </select>
