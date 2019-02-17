@@ -315,7 +315,9 @@ a:hover{
 .table.table-striped{
 	 border-style: rgba(0,0,0,0);
 }
-
+.itemsIncart-nobg {
+	display: block;
+}
 
 /*.title-menu , .menu-select-nobg {
 	margin-top: 0px;
@@ -408,13 +410,25 @@ a:hover{
 	display: block;
 }
 .itemsIncart-nobg {
-	top: 660px;
-	position: fixed;
-	z-index: 1;
-	background-color: rgb(255,150,0,0.2);
-	border-radius: 4px;
-	width: 140px;
-	left: 91.5%;
+	display: none;
+}
+.itemsIncart-nobg2 {
+	font-family: 'Mitr', sans-serif;
+	color: #fff;
+	text-align: right;
+	padding: 6pt;
+	position: relative;
+	background-color: #0a0c0d;
+}
+.badge2{
+  position: absolute;
+  top:10px;
+  right: 10px;
+  padding: 2.5px 5px;
+  border-radius: 50%;
+  background-color: #e9a100;
+  color: black;
+  font-size: 10pt;
 }
 
 

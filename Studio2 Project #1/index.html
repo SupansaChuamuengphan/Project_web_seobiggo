@@ -88,7 +88,19 @@
             <button class="viewCart" v-if="!isShowingCart" @click="isShowingCart = true"><i class="fas fa-shopping-basket"></i> <span class="badge">{{ cart.items.length }}</span></button>
 
             <button class="Shopping" v-else @click ="isShowingCart = false"><i class="far fa-arrow-alt-circle-left"></i></button>
-        </div>
+        </div><!-- 1 -->
+
+        <div class="itemsIncart-nobg2" v-if="!isShowingCart"v-show="isHiding">
+             <span>
+                <span>มีของหวาน</span> {{ cart.items.length }} ชิ้น, ยอดรวม  {{ cartTotal | currency }}
+            </span>
+            <button class="viewCart" v-if="!isShowingCart" @click="isShowingCart = true"><i class="fas fa-shopping-basket"></i> <span class="badge2">{{ cart.items.length }}</span></button>
+
+            <button class="Shopping" v-else @click ="isShowingCart = false"><i class="far fa-arrow-alt-circle-left"></i></button>
+        </div><!-- 2 -->
+
+
+
 
 
         <div class="itemsIncart" v-else v-show="isHiding">
