@@ -343,6 +343,19 @@ a:hover{
 	margin-left: 400px; 
 }
 
+.itemsIncart-nobg {
+	display: none;
+}
+
+.itemsIncart-nobg2 {
+	font-family: 'Mitr', sans-serif;
+	color: #fff;
+	text-align: right;
+	padding: 6pt;
+	position: relative;
+	background-color: #0a0c0d;
+}
+
 }
 
 
@@ -360,7 +373,7 @@ a:hover{
 	padding-left: 20px;
 	float: left;
 	position: absolute;
-	margin-left: 400px;
+	margin-left: 280px;
 }
 
 .footer {
