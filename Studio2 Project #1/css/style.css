@@ -318,6 +318,9 @@ a:hover{
 .itemsIncart-nobg {
 	display: block;
 }
+.itemsIncart-nobg2 {
+	display: none;
+}
 
 /*.title-menu , .menu-select-nobg {
 	margin-top: 0px;
