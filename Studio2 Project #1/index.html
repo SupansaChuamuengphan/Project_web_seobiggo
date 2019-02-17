@@ -136,8 +136,8 @@
                         <tr v-for="item in cart.items" >
                             <td> {{ item.product.name }}</td>
                             <td>
-                                <span>  {{ item.quantity }} </span>
                                 <button class="btn-qtplus" :disabled="item.product.inStock == 0" @click="increaseQty(item)">+</button>
+                                <span>  {{ item.quantity }} </span>
                                 <button class="btn-qtdanger" @click="decreaseQty(item)" >-</button>
                             </td>
                             <td> {{ item.quantity * item.product.price | currency }} </td>
