@@ -1,0 +1,263 @@
+<!DOCTYPE html> 
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seobinggo Korean Dessert Cafe</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Mitr" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="style/fontawesome.min.css">
+    <link rel="stylesheet" type="text/css" href="style/fontawesome.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css" integrity="sha384-mzrmE5qonljUremFsqc01SB46JvROS7bZs3IO2EmfFsd15uHvIt+Y8vEf7N7fWAU" crossorigin="anonymous">
+    <link rel="icon" type="image/png" href="images/logo_bw.png" />
+
+</head>
+
+<body>
+    <div id="app">
+<header v-if="!isShowingCart">
+        <div class="menu-bar">
+            <div class="logo"><img src="images/logo_index2.png"></div><!-- logo -->
+            <div class="menu-list">
+                <li class="menu-item">
+                    <a @click="goToMenu2()">เมนู</a> |
+                    <a @click="goToBooking()">สั่งออนไลน์</a> |
+                    <a href="https://web.facebook.com/SeoBingGo/?_rdc=1&_rdr">ติดต่อเรา</a>
+                </li>
+            </div><!-- menu-list -->
+        </div><!-- menu-bar -->
+
+
+    <div class="promote-all">
+        
+         <div class="title-promote" align="middle" >
+            <img src="images/t1.png">
+        </div>
+
+        <div class="image-promote">
+            <img src="images/p7.png">
+            <img src="images/p8.png">
+            <img src="images/p9.png">
+        </div>
+
+        <div class="btn-buyOnline">
+             <button @click="goToMenu()">สั่งจองออนไลน์</button>
+        </div>
+  </div><!-- promote-all -->
+
+    </header>
+
+        <div class="user-information" v-if="!isShowingCart">
+            <label>ระบุข้อมูลผู้สั่งออเดอร์</label>
+            <input type="text" placeholder="ชื่อ" v-model="nameCustomer">
+            <input type="text" placeholder="เบอร์โทรศัพท์"><br>
+            <span> เลือกโต๊ะ </span>
+            <select v-model="tableSelect.numberSelect">
+                <option v-for="n in 20" v-bind:value="n">{{n}}</option>
+            </select>
+            <span> เลือกที่นั่ง </span>
+            <select v-model="sitSelect.numbsitSelect" >
+                <option v-for="n in 6" v-bind:value="n">{{n}}</option>
+            </select>
+
+        </div><br><br><br><!-- user-information -->
+
+
+
+ <div class="bg-board">
+
+        <div class="title-menu">
+
+                <div class="menu-select-nobg" v-if="!isShowingCart">
+                    <img src="images/t2.png">
+                </div>
+
+                <div class="menu-select" v-else v-show="isHiding" ><br>
+                    <img src="images/t3.png">
+                </div>
+
+
+        </div><!-- title-menu -->
+
+
+
+         <div class="itemsIncart-nobg" v-if="!isShowingCart"v-show="isHiding">
+             <span>
+                <span>มีของหวาน</span> {{ cart.items.length }} ชิ้น, ยอดรวม {{ cartTotal | currency }}
+            </span>
+            <button class="viewCart" v-if="!isShowingCart" @click="isShowingCart = true"><i class="fas fa-shopping-basket"></i> <span class="badge">{{ cart.items.length }}</span></button>
+
+            <button class="Shopping" v-else @click ="isShowingCart = false"><i class="far fa-arrow-alt-circle-left"></i></button>
+        </div>
+
+
+        <div class="itemsIncart" v-else v-show="isHiding">
+             <span>
+                <span>มีของหวาน</span> {{ cart.items.length }} ชิ้น, ยอดรวม {{ cartTotal | currency }}
+            </span>
+            <button class="viewCart" v-if="!isShowingCart" @click="isShowingCart = true"><i class="fas fa-shopping-basket"></i> <span class="badge">{{ cart.items.length }}</span></button>
+
+            <button class="Shopping" v-else @click ="isShowingCart = false"><i class="far fa-arrow-alt-circle-left"></i></button>
+        </div>
+
+            
+            <div class="footer"  v-if="!isShowingCart"><i class="far fa-copyright"></i> studio2 project #1 <br> 802207 INTERACTIVE MEDIA DESIGN II</div>
+
+
+    <div class="row-product"  v-if="!isShowingCart">
+
+        <div class="menu-product" v-for="product in products">
+                    <div class="card">
+                      <img  class="card-img-top"  v-bind:src="product.picture" >
+                      <div class="card-body">
+                        <h5 class="card-title">{{ product.name }}</h5>
+                        <p class="card-text">{{ product.price }} ฿</p>
+                        <button class="btn-selectProduct" @click="addProductTocart(product)" :disabled="product.inStock == 0">เลือก</button>
+                        
+                      </div>
+                    </div>
+
+                </div>
+
+    </div>
+
+
+            <div class="menu-quantity" v-else v-show="isHiding">
+                <table class="table table-striped" v-if="cart.items.length > 0">
+                    <thead>
+                        <tr>
+                            <th>รายการของหวาน</th>
+                              <th class="count-product">จำนวน</th>
+                            <th width="200">ราคา</th>
+                        </tr>
+                    </thead>
+                    
+                    <tbody>
+                        <tr v-for="item in cart.items" >
+                            <td> {{ item.product.name }}</td>
+                            <td>
+                                <span>  {{ item.quantity }} </span>
+                                <button class="btn-qtplus" :disabled="item.product.inStock == 0" @click="increaseQty(item)">+</button>
+                                <button class="btn-qtdanger" @click="decreaseQty(item)" >-</button>
+                            </td>
+                            <td> {{ item.quantity * item.product.price | currency }} </td>
+                        </tr>
+
+
+                        <tr>
+                            <td></td>
+                            <td>
+                                <button class="btn-sure" v-on:click="isHiding = !isHiding">ยืนยัน</button></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p class="no-product" v-else v-show="isHiding" >ไม่มีสินค้าในตะกร้า</p>
+                </div>
+
+
+                <div class="checkout-bill" v-show="!isHiding">
+
+                    <div class="logo-checkout">
+                        <img src="images/logo_index2.png"><br>
+                    
+
+                    <div class="dateAndtime">วันที่ {{ getDateTime() }} </div><br>
+
+                    <div class="customer-info">รายการของคุณ {{ nameCustomer }} โต๊ะที่ {{tableSelect.numberSelect}} จำนวนที่นั่ง {{ sitSelect.numbsitSelect }} ที่</div><br>
+
+                    </div>
+
+                    <div class="price-bill">
+                         
+                         <table class="table table-striped" v-if="cart.items.length > 0">
+                    <thead>
+                        <tr>
+                            <th>รายการของหวาน</th>
+                              <th>จำนวน</th>
+                            <th width="200">ราคา</th>
+                        </tr>
+                    </thead>
+                    
+                    <thead>
+                        <tr v-for="item in cart.items" >
+                            <th> {{ item.product.name }}</th>
+                            <th>
+                                <span>  {{ item.quantity }} </span>
+                            </th>
+                            <th> {{ item.quantity * item.product.price | currency }} </th>
+
+                        <tr>
+                            <th>รวม</th>
+                            <th></th>
+                            <th class="text-left">{{ grandTotal | currency }}</th>
+                        </tr>
+
+                        <tr>
+                            <th>ราคาสินค้า</th>
+                            <th></th>
+                            <th class="text-left"> {{ cartTotal | currency }} </th>
+                        </tr>
+
+                        <tr>
+                             <th>ภาษีมูลค่าเพิ่ม 7% </th>
+                             <th></th>
+                             <th class="text-left"> {{ taxAmount | currency }} </th>
+                        </tr>
+
+
+                        </tr>
+
+                    </thead>
+                </table>
+
+
+                <div class="btn-main">
+                    <a href="index.html"><button>กลับหน้าหลัก</button></a>
+                </div>
+
+    
+
+
+                    </div><!-- price-bill -->
+
+
+                    
+                </div><!-- checkoutbill -->
+
+
+ </div>                 
+            </div>
+
+
+    </div><!-- container -->
+    </div><!-- app -->
+
+    <script>
+     function goToMenu() {
+     document.body.scrollTop = 0;
+     document.documentElement.scrollTop = 630;
+     }
+    </script>
+
+    <script>
+     function goToMenu2() {
+     document.body.scrollTop = 0;
+     document.documentElement.scrollTop = 785;
+     }
+    </script>
+
+     <script>
+     function goToBooking() {
+     document.body.scrollTop = 0;
+     document.documentElement.scrollTop = 435;
+     }
+    </script>
+
+</body>
+
+    <script src="js/vue.min.js"></script>
+    <script src="js/axios.min.js"></script>
+    <script src="js/app.js"></script>
+    
+</html>  
