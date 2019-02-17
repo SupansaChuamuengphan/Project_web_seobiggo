@@ -300,7 +300,9 @@ a:hover{
 .promote-all{
 	display: none;
 }
-
+.table.table-striped{
+	 border-style: rgba(0,0,0,0);
+}
 
 
 /*.title-menu , .menu-select-nobg {
