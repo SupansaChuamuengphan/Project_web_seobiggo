@@ -300,7 +300,9 @@ a:hover{
 .promote-all{
 	display: none;
 }
-
+.table.table-striped{
+	 border-style: rgba(0,0,0,0);
+}
 
 
 /*.title-menu , .menu-select-nobg {
@@ -344,7 +346,7 @@ a:hover{
 	padding-left: 20px;
 	float: left;
 	position: absolute;
-	margin-left: 200px;
+	margin-left: 400px;
 }
 
 .footer {
@@ -393,4 +395,5 @@ a:hover{
 .promote-all{
 	display: block;
 }
+
 }
