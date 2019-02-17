@@ -111,6 +111,7 @@
                       <img  class="card-img-top"  v-bind:src="product.picture" >
                       <div class="card-body">
                         <h5 class="card-title">{{ product.name }}</h5>
+                        <span> {{ product.description }}</span>
                         <p class="card-text">{{ product.price }} ฿</p>
                         <button class="btn-selectProduct" @click="addProductTocart(product)" :disabled="product.inStock == 0">เลือก</button>
                         

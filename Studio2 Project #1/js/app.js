@@ -8,12 +8,14 @@ new Vue({
   {
    id:1,
    name:'GOGUMA',
+   description: '',
    price: 220,
    picture: './images/p1.png',
    },
    {
    id:2,
    name:'MANGO CHEESE',
+   description: 'น้ำแข็งไสปุยหิมะเนื้อนุ่ม ราดด้วยซอสมะม่วง พร้อมก้อนชีสเนื้อแน่น',
    price: 235,
    picture: './images/p2.png',
    },
